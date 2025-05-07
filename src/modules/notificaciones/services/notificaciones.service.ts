@@ -8,14 +8,14 @@ import { CreateNotificacionDto } from '../dto/notificaciones.dto';
 export class NotificacionesService {
   constructor(
     @InjectRepository(Notificacion)
-    private readonly notificacionRepository: Repository<Notificacion>,
+    private readonly notificacionRepository: Repository<Notificacion>
   ) {}
 
   async create(
-    createNotificacionDto: CreateNotificacionDto,
+    createNotificacionDto: CreateNotificacionDto
   ): Promise<Notificacion> {
     const notificacion = this.notificacionRepository.create(
-      createNotificacionDto,
+      createNotificacionDto
     );
     return this.notificacionRepository.save(notificacion);
   }

@@ -1,6 +1,6 @@
 export class CreateNotificacionDto {
-    readonly usuarioId: number;
-    readonly mensaje: string;
-    readonly leida: boolean;
-    readonly fechaEnvio: Date;
+  readonly usuarioId: number;
+  readonly mensaje: string;
+  readonly leida: boolean;
+  readonly fechaEnvio: Date;
 }

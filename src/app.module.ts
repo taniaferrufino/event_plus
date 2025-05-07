@@ -11,6 +11,8 @@ import { Valoracion } from './modules/valoraciones/entities/valoraciones.entity'
 import { Entrada } from './modules/entradas/entities/entradas.entity';
 import { Notificacion } from './modules/notificaciones/entities/notificaciones.entity';
 import { SeedModule } from './seed/seed.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from './auth/entities/user.entity';
 
 @Module({
   imports: [
@@ -23,12 +25,12 @@ import { SeedModule } from './seed/seed.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get<string>('DATABASE_HOST'),
-        port: configService.get<number>('DATABASE_PORT'),
-        username: configService.get<string>('DATABASE_USER'),
-        password: configService.get<string>('DATABASE_PASSWORD'),
-        database: configService.get<string>('DATABASE_NAME'),
-        entities: [Evento, Valoracion, Entrada, Notificacion], // Agrega todas las entidades aquí
+        host: configService.get<string>('DATABASE_HOST') || 'localhost',
+        port: configService.get<number>('DATABASE_PORT') || 5432,
+        username: configService.get<string>('DATABASE_USER') || 'postgres',
+        password: configService.get<string>('DATABASE_PASSWORD') || 'password',
+        database: configService.get<string>('DATABASE_NAME') || 'event_plus',
+        entities: [Evento, Valoracion, Entrada, Notificacion, User], // Agrega todas las entidades aquí
         synchronize: true, // ¡No uses esto en producción! Solo para desarrollo
       }),
     }),
@@ -38,6 +40,7 @@ import { SeedModule } from './seed/seed.module';
     EntradasModule,
     NotificacionesModule,
     SeedModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

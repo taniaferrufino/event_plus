@@ -7,7 +7,7 @@ import { Evento } from '../entities/evento.entity';
 export class EventosService {
   constructor(
     @InjectRepository(Evento)
-    private readonly eventoRepository: Repository<Evento>,
+    private readonly eventoRepository: Repository<Evento>
   ) {}
 
   async obtenerTodos(): Promise<Evento[]> {
@@ -29,9 +29,13 @@ export class EventosService {
 
   async actualizar(id: number, evento: Evento): Promise<Evento> {
     await this.eventoRepository.update(id, evento);
-    const eventoActualizado = await this.eventoRepository.findOne({ where: { id } });
+    const eventoActualizado = await this.eventoRepository.findOne({
+      where: { id },
+    });
     if (!eventoActualizado) {
-      throw new NotFoundException(`Evento con ID ${id} no encontrado después de la actualización`);
+      throw new NotFoundException(
+        `Evento con ID ${id} no encontrado después de la actualización`
+      );
     }
     return eventoActualizado;
   }

@@ -8,7 +8,7 @@ import { CreateValoracionDto } from '../dto/valoraciones.dto';
 export class ValoracionesService {
   constructor(
     @InjectRepository(Valoracion)
-    private readonly valoracionRepository: Repository<Valoracion>,
+    private readonly valoracionRepository: Repository<Valoracion>
   ) {}
 
   async create(createValoracionDto: CreateValoracionDto): Promise<Valoracion> {

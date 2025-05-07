@@ -8,7 +8,7 @@ import { CreateEntradaDto } from '../dto/entradas.dto';
 export class EntradasService {
   constructor(
     @InjectRepository(Entrada)
-    private readonly entradaRepository: Repository<Entrada>,
+    private readonly entradaRepository: Repository<Entrada>
   ) {}
 
   async create(createEntradaDto: CreateEntradaDto): Promise<Entrada> {

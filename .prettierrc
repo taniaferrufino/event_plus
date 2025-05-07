@@ -2,5 +2,6 @@
   "endOfLine": "lf",
   "insertPragma": false,
   "requirePragma": false,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "singleQuote": true
 }
