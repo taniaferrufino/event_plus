@@ -6,8 +6,9 @@ import {
   IsBoolean,
   IsDateString,
 } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
 
-export class EventoDto {
+export class CreateEventoDto {
   @IsNotEmpty()
   @IsString()
   titulo: string;
@@ -36,3 +37,5 @@ export class EventoDto {
   @IsBoolean()
   activo?: boolean;
 }
+
+export class UpdateEventoDto extends PartialType(CreateEventoDto) {}

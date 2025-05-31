@@ -5,10 +5,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.setGlobalPrefix('api/v1'); // Esto agrega el prefijo global "api/v1" a todas las rutas
-
+  app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(3000);
+  // Habilita el modo de depuración
+  app.enableCors();
+  console.log('Servidor corriendo en modo de depuración');
+
+  await app.listen(4000);
 }
 bootstrap();

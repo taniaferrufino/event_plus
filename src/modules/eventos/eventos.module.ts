@@ -1,15 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EventosService } from './services/eventos.service';
 import { EventosController } from './controllers/eventos.controller';
-import { Evento } from './entities/evento.entity';
+import { EventosService } from './services/eventos.service';
+import { ExcelService } from '../../exel/excel.service';
+import { Evento } from './entities/evento.entity'; // ajusta ruta
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Evento]), // Registra la entidad Evento
-  ],
+  imports: [TypeOrmModule.forFeature([Evento])],  // <-- Esto es clave para inyectar el repositorio
   controllers: [EventosController],
-  providers: [EventosService],
-  exports: [TypeOrmModule], // Exporta TypeOrmModule si otros módulos lo necesitan
+  providers: [EventosService, ExcelService],
+  exports: [EventosService],
 })
 export class EventosModule {}

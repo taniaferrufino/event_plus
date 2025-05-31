@@ -10,7 +10,6 @@ import { Evento } from './modules/eventos/entities/evento.entity';
 import { Valoracion } from './modules/valoraciones/entities/valoraciones.entity';
 import { Entrada } from './modules/entradas/entities/entradas.entity';
 import { Notificacion } from './modules/notificaciones/entities/notificaciones.entity';
-import { SeedModule } from './seed/seed.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './auth/entities/user.entity';
 
@@ -39,7 +38,6 @@ import { User } from './auth/entities/user.entity';
     ValoracionesModule,
     EntradasModule,
     NotificacionesModule,
-    SeedModule,
     AuthModule,
   ],
   controllers: [],
